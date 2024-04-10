@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <title>Font Form</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles.css" />
     <script src="script.js"></script>
   </head>
   <body>
     <h1 id="title">Font Survey</h1>
-    <p id="description">Share your input on various fonts with the form below.</p>
+    <p id="description">Please share your font preferences by filling out this form.</p>
     <form id="survey-form">
        <fieldset>
         <label id="name-label" for="name">Name <input id="name" name="name" type="text" placeholder="Helvetica Harrington"required /></label>
@@ -41,15 +41,99 @@
         </label>
         </legend>
         <fieldset>
-          <label for="number">Rate your selected font on a scale of 1 to 10.</label>
-          <input id="number" name="age" type="number" min="1" max="10" placeholder="10" required />
+          <label for="number" id="number-label">Rate your selected font on a scale of 1 to 10.</label>
+          <input id="number" class="input" name="age" type="number" min="1" max="10" placeholder="10" required />
 
   
          
         
- 
-        <br>
-        <label for="something">Explain why _ is your favourite font.
-          <textarea id="something" name="something" rows="3" cols="30" placeholder=""></textarea></label></fieldset>
+ <br><br>
+        <label for="explain">Explain why your selected font is your favourite.
+          <textarea id="Explain" class="input" name="Explain" rows="4" cols="30" placeholder="Papyrus is my favourite because of Undertale. Comic sans is pretty good too."></textarea></label></fieldset>
+        
+<label for="dropdown">Select your favourite letter of the English alphabet to type with your selected font.</label>
+<select class="input" id="dropdown" name="favorite-letter">
+  <option value="A">A</option>
+  <option value="B">B</option>
+  <option value="C">C</option>
+  <option value="D">D</option>
+  <option value="E">E</option>
+  <option value="F">F</option>
+  <option value="G">G</option>
+  <option value="H">H</option>
+  <option value="I">I</option>
+  <option value="J">J</option>
+  <option value="K">K</option>
+  <option value="L">L</option>
+  <option value="M">M</option>
+  <option value="N">N</option>
+  <option value="O">O</option>
+  <option value="P">P</option>
+  <option value="Q">Q</option>
+  <option value="R">R</option>
+  <option value="S">S</option>
+  <option value="T">T</option>
+  <option value="U">U</option>
+  <option value="V">V</option>
+  <option value="W">W</option>
+  <option value="X">X</option>
+  <option value="Y">Y</option>
+  <option value="Z">Z</option>
+</select>
+
         <label for="submit" type="submit"><input id="submit" type="submit" value="Submit" /></label>
  </body>
+
+<!--Don't mind the code below! I wanted to add some custom JavaScript, but freeCodeCamp only has a HTML and CSS file for this project, so I found a little workaround! The code below is what changes the way your selected font is formatted in the final three questions.-->
+
+
+<script>
+  (function(window, document) {
+
+    // This contains code that should be taken care of right away
+
+    window.onload = initialize;
+
+    function initialize (){
+
+      // Get all radio buttons
+      const radioButtons = document.querySelectorAll('input[name="favourite-font"]');
+
+      // Get the label element for the font rating
+      const ratingLabel = document.querySelector('label[for="number"]');
+
+      // Get the label element for the explain question
+      const explainLabel = document.querySelector('label[for="explain"]');
+
+      // Get the label element for the font rating
+      const dropdownLabel = document.querySelector('label[for="dropdown"]');
+
+      // Add click event listener to each radio button
+      radioButtons.forEach(radioButton => {
+        radioButton.addEventListener('click', function() {
+
+          
+          // Get the text content of the associated label and trim whitespace
+          const fontName = document.querySelector(`label[for="${this.id}"]`).textContent.trim();
+
+          // Update rating label with font name wrapped in span with appropriate font class
+          ratingLabel.innerHTML = `Rate <span class="${this.parentNode.className}">${fontName}</span> on a scale of 1 to 10.`;
+
+          // Update explain label with font name wrapped in span with appropriate font class
+          explainLabel.innerHTML = `Explain why <span class="${this.parentNode.className}">${fontName}</span> is your favourite.`;
+
+          // Update rating label with font name wrapped in span with appropriate font class
+          dropdownLabel.innerHTML = `Select your favourite letter of the alphabet to type with <span class="${this.parentNode.className}">${fontName}.`;
+
+          //Update inputs with selected fonts
+          document.getElementsByClass("input").style.fontFamily = fontName;
+
+          // Log selected font
+          console.log(`Selected font: ${fontName}`); //For some reason, this code breaks when the console log is moved up a few lines; I will investigate this
+          
+
+        });
+      });
+    }
+  })(window, document);
+</script>
