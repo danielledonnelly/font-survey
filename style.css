@@ -116,6 +116,10 @@ input[type="file"] {
   font-family: Wingdings, sans-serif; 
 }
 
+.input{
+  font-family: fontName;
+}
+
 #dropdown {
   background-color: #0a0a23; /* Sets the background color of the select element */
   border-color: #0a0a23;

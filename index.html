@@ -52,7 +52,7 @@
           <textarea id="Explain" class="input" name="Explain" rows="4" cols="30" placeholder="Papyrus is my favourite because of Undertale. Comic sans is pretty good too."></textarea></label></fieldset>
         
 <label for="dropdown">Select your favourite letter of the English alphabet to type with your selected font.</label>
-<select class="input" id="dropdown" name="favorite-letter">
+<select class="input " id="dropdown" name="favorite-letter">
   <option value="A">A</option>
   <option value="B">B</option>
   <option value="C">C</option>
@@ -124,13 +124,12 @@
           // Update rating label with font name wrapped in span with appropriate font class
           dropdownLabel.innerHTML = `Select your favourite letter of the alphabet to type with <span class="${this.parentNode.className}">${fontName}.`;
 
-          //Update inputs with selected fonts
-          document.getElementsByClass("input").style.fontFamily = fontName;
           // Update inputs with selected fonts
-          var inputElements = document.getElementsByClassName("input");
-          for (var i = 0; i < 3; i++) {
-            inputElements[i].style.fontFamily = fontName;
-          }  
+          var inputs = document.getElementsByClassName("input");
+
+          for (var i = 0; i < inputs.length; i++) {
+            inputs[i].style.fontFamily = fontName;
+          }
 
           // Log selected font
           console.log(`Selected font: ${fontName}`); //For some reason, this code breaks when the console log is moved up a few lines; I will investigate this
