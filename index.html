@@ -112,7 +112,6 @@
       radioButtons.forEach(radioButton => {
         radioButton.addEventListener('click', function() {
 
-          
           // Get the text content of the associated label and trim whitespace
           const fontName = document.querySelector(`label[for="${this.id}"]`).textContent.trim();
 
@@ -127,6 +126,11 @@
 
           //Update inputs with selected fonts
           document.getElementsByClass("input").style.fontFamily = fontName;
+          // Update inputs with selected fonts
+          var inputElements = document.getElementsByClassName("input");
+          for (var i = 0; i < 3; i++) {
+            inputElements[i].style.fontFamily = fontName;
+          }  
 
           // Log selected font
           console.log(`Selected font: ${fontName}`); //For some reason, this code breaks when the console log is moved up a few lines; I will investigate this
