@@ -119,6 +119,11 @@ input[type="file"] {
   font-family: Wingdings, sans-serif; 
 }
 
+.thank {
+    color: #ffffff;
+}
+
+
 #dropdown {
   background-color: #0a0a23; /* Sets the background color of the select element */
   border-color: #0a0a23;
@@ -129,3 +134,4 @@ input[type="file"] {
   background-color: #0a0a23; /* Sets the background color of the options */
   color: white; /* Sets the text color of the options */
 }
+
