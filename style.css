@@ -75,6 +75,9 @@ input[type="file"] {
   display: inline; 
 }
 
+.input{
+  font-family: fontName;
+}
 
 .arial {
   font-family: Arial, sans-serif;
@@ -114,10 +117,6 @@ input[type="file"] {
 
 .wingdings {
   font-family: Wingdings, sans-serif; 
-}
-
-.input{
-  font-family: fontName;
 }
 
 #dropdown {
