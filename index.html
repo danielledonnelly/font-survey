@@ -9,7 +9,7 @@
   <body>
     <h1 id="title">Font Survey</h1>
     <p id="description">Share your font preferences with this dynamic survey. <br> For optimal results, please fill this out on desktop. <br> Some fonts may not load as intended on mobile.</p>
-    <form id="survey-form" action="thankyou.html" method="post">
+    <form id="survey-form" method="post">
        <fieldset>
         <label id="name-label" for="name">Name <input id="name" name="name" type="text" placeholder="Helvetica Harrington"required /></label>
         <label id="email-label" for="email">Email <input id="email" name="email" type="email" placeholder="helveticaharrington@gmail.com" required /></label>
@@ -140,6 +140,13 @@
     // Log selected font
     console.log(`Selected font: ${fontName}`);
   });
+
+  document.getElementById('survey-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Redirect to the thank you page
+    window.location.href = 'thankyou.html';
+});
 });
     }
   })(window, document);
