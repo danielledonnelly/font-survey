@@ -9,6 +9,14 @@
   <body>
     <h1 id="title">Font Survey</h1>
     <p id="description">Share your font preferences with this dynamic survey. <br> For optimal results, please fill this out on desktop. <br> Some fonts may not load as intended on mobile.</p>
+    
+    <div id="thank-you-content" style="display: none">
+      <h1 class="thank">Thank you for filling out the survey!</h1>
+      <p class="thank">I appreciate that you took the time to look at my project and fill out the form. Have a great day! 
+          <br>-Danielle
+      </p>
+    </div>
+
     <form id="survey-form" method="post">
        <fieldset>
         <label id="name-label" for="name">Name <input id="name" name="name" type="text" placeholder="Helvetica Harrington"required /></label>
@@ -82,72 +90,86 @@
 </select>
 
         <label for="submit" type="submit"><input id="submit" type="submit" value="Submit" /></label>
- </body>
+</form>
 
-<!--Don't mind the code below! I wanted to add some custom JavaScript, but freeCodeCamp only has a HTML and CSS file for this project, so I found a little workaround! The code below is what changes the way your selected font is formatted in the final three questions.-->
-
-
-<script>
-  (function(window, document) {
-
-    // This contains code that should be taken care of right away
-
-    window.onload = initialize;
-
-    function initialize (){
-
-      // Get all radio buttons
-      const radioButtons = document.querySelectorAll('input[name="favourite-font"]');
-
-      // Get the label element for the font rating
-      const ratingLabel = document.querySelector('label[for="number"]');
-
-      // Get the label element for the explain question
-      const explainLabel = document.querySelector('label[for="explain"]');
-
-      // Get the label element for the font rating
-      const dropdownLabel = document.querySelector('label[for="dropdown"]');
-
-      // Add click event listener to each radio button
-      radioButtons.forEach(radioButton => {
-      radioButton.addEventListener('click', function() {
-      // Get the text content of the associated label and trim whitespace
-      const fontName = document.querySelector(`label[for="${this.id}"]`).textContent.trim();
-
-      // Update rating label with font name wrapped in span with appropriate font class
-      ratingLabel.innerHTML = `Rate <span class="${this.parentNode.className}">${fontName}</span> on a scale of 1 to 10.`;
-
-      // Update explain label with font name wrapped in span with appropriate font class
-      explainLabel.innerHTML = `Explain why <span class="${this.parentNode.className}">${fontName}</span> is your favourite. <textarea id="explain" class="input" name="explain" rows="4" cols="30" placeholder="Papyrus is my favourite because of Undertale. Comic sans is pretty good too."></textarea>`;
-
-      // Update rating label with font name wrapped in span with appropriate font class
-      dropdownLabel.innerHTML = `Select your favourite letter of the English alphabet to type with <span class="${this.parentNode.className}">${fontName}.`;
-
-      // Update all inputs with selected font class
-      var inputs = document.querySelectorAll('.input');
-                inputs.forEach(input => {
+        <!--Don't mind the code below! I wanted to add some custom JavaScript, but freeCodeCamp only has a HTML and CSS file for this project, so I found a little workaround! The code below is what changes the way your selected font is formatted in the final three questions.-->
+        <script>
+          (function(window, document) {
+        
+            // This contains code that should be taken care of right away
+          
+            window.onload = initialize;
+          
+            function initialize (){
+          
+              // Add an event listener to the form submission
+              document.getElementById('survey-form').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+          
+                // Hide the survey form
+                document.getElementById('survey-form').style.display = 'none';
+          
+                // Hide the description
+                document.getElementById('description').style.display = 'none';
+          
+                // Hide the title
+                document.getElementById('title').style.display = 'none';
+                
+                // Show the thank you message
+                document.getElementById('thank-you-content').style.display = 'block';
+              });
+        
+              // Get all radio buttons
+              const radioButtons = document.querySelectorAll('input[name="favourite-font"]');
+          
+              // Get the label element for the font rating
+              const ratingLabel = document.querySelector('label[for="number"]');
+          
+              // Get the label element for the explain question
+              const explainLabel = document.querySelector('label[for="explain"]');
+          
+              // Get the label element for the font rating
+              const dropdownLabel = document.querySelector('label[for="dropdown"]');
+          
+              // Add click event listener to each radio button
+              radioButtons.forEach(radioButton => {
+                radioButton.addEventListener('click', function() {
+                  // Get the text content of the associated label and trim whitespace
+                  const fontName = document.querySelector(`label[for="${this.id}"]`).textContent.trim();
+          
+                  // Update rating label with font name wrapped in span with appropriate font class
+                  ratingLabel.innerHTML = `Rate <span class="${this.parentNode.className}">${fontName}</span> on a scale of 1 to 10.`;
+          
+                  // Update explain label with font name wrapped in span with appropriate font class
+                  explainLabel.innerHTML = `Explain why <span class="${this.parentNode.className}">${fontName}</span> is your favourite. <textarea id="explain" class="input" name="explain" rows="4" cols="30" placeholder="Papyrus is my favourite because of Undertale. Comic sans is pretty good too."></textarea>`;
+          
+                  // Update rating label with font name wrapped in span with appropriate font class
+                  dropdownLabel.innerHTML = `Select your favourite letter of the English alphabet to type with <span class="${this.parentNode.className}">${fontName}.`;
+          
+                  // Update all inputs with selected font class
+                  var inputs = document.querySelectorAll('.input');
+                  inputs.forEach(input => {
                     input.classList.remove("arial", "calibri", "comic", "futura", "georgia", "impact", "papyrus", "times", "verdana", "wingdings");
                     // This is a special workaround for font names that include spaces such as comic sans
                     if (fontName.toLowerCase().includes("comic")) {
-                        input.classList.add("comic");
+                      input.classList.add("comic");
                     } else if (fontName.toLowerCase().includes("times")) {
-                        input.classList.add("times");
+                      input.classList.add("times");
                     } else {
-                        input.classList.add(this.parentNode.className.toLowerCase());
+                      input.classList.add(this.parentNode.className.toLowerCase());
                     }
+                  });
+                  // Log selected font
+                  console.log(`Selected font: ${fontName}`);
                 });
+              });
+            }
+          })(window, document);
+        </script>
+      </body>
 
-    // Log selected font
-    console.log(`Selected font: ${fontName}`);
-  });
 
-  document.getElementById('survey-form').addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent the default form submission
 
-  // Redirect to the thank you page
-  window.location.href = 'thankyou.html';
-});
-});
-    }
-  })(window, document);
-</script>
+
+
+
