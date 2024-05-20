@@ -6,4 +6,4 @@ I revisited it to add the aforementioned JS code within those existing files to 
 
 Please note that this works best on PC, as some fonts don't load correctly on mobile.
 
-Visit the live site [here]([url](https://danielledonnelly.github.io/font-survey/))
+Visit the live site [here](https://danielledonnelly.github.io/font-survey/)
