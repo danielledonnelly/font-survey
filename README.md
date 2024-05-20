@@ -2,8 +2,8 @@ This is a dynamic font survey that adapts the styling of questions and inputs ba
 
 This was a certification project for freeCodeCamp that was only supposed to use one HTML file and one CSS file to create a simple survey.
 
-I revisited it to add the aforementioned JS code within those existing files in order to make things more interesting and fun!
+I revisited it to add the aforementioned JS code within those existing files to make things more interesting and fun!
 
 Please note that this works best on PC, as some fonts don't load correctly on mobile.
 
-Visit the live site [here](danielledonnelly.github.io/font-survey/).
+Visit the live site [here](danielledonnelly.github.io/font-survey).
