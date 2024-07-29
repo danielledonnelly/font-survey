@@ -1,5 +1,5 @@
 # [Dynamic Font Survey](https://danielledonnelly.github.io/font-survey/)
-## A quirky little survey that adapts the styling of questions and inputs based on your font selection
+## A quirky little survey that adapts its styling based on your font selection
 ✦ Don't be fooled by the lack of JavaScript file
 ✦ This was made for a freeCodeCamp certification which only allowed HTML and CSS files
 ✦ But I wanted to be extra so I added some JS shenanigans within the HTML file
